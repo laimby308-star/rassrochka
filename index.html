@@ -48,24 +48,29 @@ section h2{margin:0;font:900 2.1rem/1 var(--disp);letter-spacing:-.03em}
 .term span{display:block;font:600 .72rem var(--disp);opacity:.85;margin-top:3px}
 .total{font:900 1.55rem/1.1 var(--disp);text-align:right;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .mplus .total{color:var(--green-deep)}
+section.paida{background:radial-gradient(circle at 100% 0,#ff6a6a 0,transparent 45%),linear-gradient(160deg,#e4122b,#a80b1c);color:#fff}
+.paida h2{font-size:1.7rem;letter-spacing:-.02em}
+.paida .badge{background:#111;color:#fff}
+.paida .term{background:#e4122b;color:#fff}
+.paida .total{color:#c40d22}
 .sub{grid-column:1/-1;margin-top:6px;padding-top:6px;border-top:2px dashed #d9d9d9;color:#4a4f4d;font-size:.86rem;font-variant-numeric:tabular-nums;display:flex;justify-content:space-between;gap:8px}
 .empty{background:rgba(255,255,255,.6);color:#111;border-radius:18px;padding:14px;margin-bottom:10px}
 button.copy{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;width:100%}
 button.copy:focus-visible{outline:3px solid #111;outline-offset:3px;border-radius:8px}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--yellow);color:#111;font-weight:700;padding:9px 16px;border-radius:999px;border:2px solid #111;opacity:0;pointer-events:none;transition:opacity .2s}
 #toast.on{opacity:1}
-  footer{text-align:center;color:var(--muted);font-size:.72rem;padding:0 14px 26px}
+footer{text-align:center;color:var(--muted);font-size:.72rem;padding:0 14px 26px}
 @media (min-width:860px){
   main{max-width:1100px;padding:36px 32px 64px}
   h1{font-size:1.5rem;margin-bottom:18px}
   .price{max-width:620px;padding:16px 22px 18px}
   #amount{font-size:3.2rem}
-  #out{display:grid;grid-template-columns:1.35fr 1fr;gap:26px;align-items:start;margin-top:28px}
+  #out{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:start;margin-top:28px}
   section{margin-top:0;padding:20px 18px 8px;border-radius:30px}
   section h2{font-size:2.8rem}
   .row{padding:16px 18px}
   .term{font-size:1.1rem}
-  .total{font-size:2rem}
+  .total{font-size:1.6rem}
 }
 @media (min-width:1400px){html{font-size:20px}main{max-width:1280px}}
 @media (prefers-reduced-motion: reduce){#toast{transition:none}}
@@ -83,12 +88,13 @@ button.copy:focus-visible{outline:3px solid #111;outline-offset:3px;border-radiu
   </div>
   <div id="out"></div>
 </main>
-  <footer>made by Dastan Jeenbekov</footer>
+<footer>made by Dastan Jeenbekov</footer>
 <div id="toast" role="status" aria-live="polite">Скопировано</div>
 <script>
 // Ставки: срок (мес) -> процент по обратному расчёту. Итог = цена / (1 - процент/100).
 var PLANS = [
   {id:"zero", name:"ZERO", bank:"Айыл банк", rates:[{m:3,p:5},{m:6,p:10},{m:12,p:15}]},
+  {id:"paida", name:"Пайда!", bank:"Optima Bank", rates:[{m:3,p:5},{m:6,p:10},{m:12,p:15}]},
   {id:"mplus", name:"M+", bank:"М-банк", rates:[{m:3,p:5}]}
 ];
 var input = document.getElementById("amount");
